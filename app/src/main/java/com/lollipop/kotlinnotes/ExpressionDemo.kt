@@ -11,7 +11,7 @@ class ExpressionDemo {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-
+            print(maxFour(4,5))
         }
 
         fun max(a: Int, b: Int): Int {
@@ -30,5 +30,12 @@ class ExpressionDemo {
         fun maxThree(a: Int, b: Int): Int {
             return a.coerceAtLeast(b)
         }
+
+        fun maxFour(a: Int, b: Int): Int {
+            if (a == 4)
+                a
+            return a.coerceAtLeast(b)
+        }
+
     }
 }
