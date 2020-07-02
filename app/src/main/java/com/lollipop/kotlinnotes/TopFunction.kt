@@ -1,4 +1,4 @@
-@file:JvmName(name = "TopNewName")
+//@file:JvmName(name = "TopNewName")
 
 package com.lollipop.kotlinnotes
 
