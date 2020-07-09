@@ -11,7 +11,7 @@ class ExpressionDemo {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            print(maxFour(4,5))
+            print(maxFour(4, 5))
         }
 
         fun max(a: Int, b: Int): Int {

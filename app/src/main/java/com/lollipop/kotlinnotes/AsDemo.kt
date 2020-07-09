@@ -1,6 +1,7 @@
 package com.lollipop.kotlinnotes
 
 import com.lollipop.test.Person as People
+
 /**
  * @Author: lollipop
  * @Document: 关键字as的使用
@@ -33,8 +34,10 @@ class AsDemo {
      */
     private fun changeMethodNameUseAs(str: String) {
         Person.Dad
+        //方式1
         com.lollipop.test.Person("lollipop")
 
+        //方式二
         People("lollipop")
     }
 }
