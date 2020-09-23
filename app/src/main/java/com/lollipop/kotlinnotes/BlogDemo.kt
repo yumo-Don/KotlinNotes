@@ -1,33 +1,52 @@
 package com.lollipop.kotlinnotes
 
+import android.content.Context
+import android.util.Log
+import android.widget.TextView
+
 /**
  * @Author: lollipop
  * @Document:
  */
+
+
 class BlogDemo {
 
-}
 
-fun B.c(){
+    companion object {
+        private val list = listOf(1, 2, 3)
 
-}
+        @JvmStatic
+        fun main(args: Array<String>) {
+            list.asSequence().map {
+                println("map :$it")
+                it * 2
+            }.find { it > 2 }
 
-fun C.c(){
 
-}
-
-open class B{
-    open fun a(){
-        print("B 的 a()")
+            val b = B()
+        }
     }
 
+
 }
 
-class C: B() {
-    override fun a(){
-        print("C 的 a()")
+class B {
+    fun z(title: String, name: String, age: String,sex:String) {
 
-        mapOf(1 to 1)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

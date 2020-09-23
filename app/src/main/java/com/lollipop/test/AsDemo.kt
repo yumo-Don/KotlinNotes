@@ -5,5 +5,20 @@ package com.lollipop.test
  * @Document:
  */
 class AsDemo {
-    fun method(){}
+    companion object{
+        @JvmStatic
+        fun main(args: Array<String>) {
+            val a = A()
+
+        }
+
+        fun setNull(a:A){
+        }
+    }
 }
+
+public class A(var name:String = "lollipop"){
+
+}
+
+

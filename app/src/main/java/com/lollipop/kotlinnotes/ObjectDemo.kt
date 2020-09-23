@@ -2,13 +2,29 @@ package com.lollipop.kotlinnotes
 
 object ObjectDemo {
 
-    fun test(){
-
+    fun test() {
+        UserInfoInstance.isVip()
     }
 }
 
-class A{
-    fun a(){
-        ObjectDemo.test()
+object UserInfoInstance {
+    var name: String = ""
+    var address: String = ""
+    var vipLevel: Int = 0
+
+    fun isVip() = vipLevel > 0
+}
+
+class A {
+
+    private fun test() {
+
+    }
+
+    companion object {
+
+        private fun z() {
+
+        }
     }
 }
