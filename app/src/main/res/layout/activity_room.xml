@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lollipop.Jetpack.room.RoomActivity">
+    tools:context="com.lollipop.jetpack.room.RoomActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

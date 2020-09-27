@@ -1,4 +1,4 @@
-package com.lollipop.Jetpack.lifecycle
+package com.lollipop.jetpack.lifecycle
 
 import android.util.Log
 import androidx.lifecycle.Lifecycle

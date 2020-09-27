@@ -1,4 +1,4 @@
-package com.lollipop.Jetpack.viewmodle
+package com.lollipop.jetpack.viewmodle
 
 import androidx.lifecycle.ViewModel
 

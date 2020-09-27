@@ -1,8 +1,7 @@
-package com.lollipop.Jetpack.room
+package com.lollipop.jetpack.room
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lollipop.kotlinnotes.R
 import com.lollipop.kotlinnotes.databinding.ActivityRoomBinding
 
 class RoomActivity : AppCompatActivity() {

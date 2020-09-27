@@ -2,11 +2,13 @@ package com.lollipop.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.lollipop.Jetpack.lifecycle.LollipopObserver
-import com.lollipop.Jetpack.viewmodle.TestViewModel
+import com.lollipop.jetpack.lifecycle.LollipopObserver
+import com.lollipop.jetpack.viewmodle.TestViewModel
 import com.lollipop.kotlinnotes.R
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val model: TestViewModel by viewModels()
+
         model.content = "lollipop"
 
         val tv = findViewById<TextView>(R.id.tv)
@@ -26,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         addObserver()
     }
 
-    private fun addObserver(){
+    private fun addObserver() {
         lifecycle.addObserver(LollipopObserver())
     }
 

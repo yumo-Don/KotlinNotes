@@ -2,7 +2,7 @@ package com.lollipop.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lollipop.Jetpack.lifecycle.LollipopObserver
+import com.lollipop.jetpack.lifecycle.LollipopObserver
 import com.lollipop.kotlinnotes.R
 
 class SecondActivity : AppCompatActivity() {
