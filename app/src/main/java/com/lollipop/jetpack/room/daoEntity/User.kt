@@ -1,4 +1,4 @@
-package com.lollipop.jetpack.room
+package com.lollipop.jetpack.room.daoEntity
 
 import androidx.room.*
 
@@ -9,11 +9,13 @@ import androidx.room.*
  */
 @Entity(tableName = "UserTable")
 data class User(
-    @PrimaryKey val uid: String,
-    val name: String,
-    val sex: String,
+    @PrimaryKey var uid: String,
+    var name: String,
+    var sex: String,
     @ColumnInfo(name = "phoneNumber") var phone: String? = null,
-    @Embedded val address: Address,
+    @Embedded var address: Address? = null,
     @Ignore var company: String? = null,
-)
+) {
+    constructor() : this("", "", "", "", null, "")
+}
 

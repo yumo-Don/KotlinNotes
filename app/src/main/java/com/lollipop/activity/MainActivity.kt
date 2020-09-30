@@ -7,7 +7,9 @@ import android.os.Message
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.lollipop.dragview.DragViewActivity
 import com.lollipop.jetpack.lifecycle.LollipopObserver
+import com.lollipop.jetpack.room.RoomActivity
 import com.lollipop.jetpack.viewmodle.TestViewModel
 import com.lollipop.kotlinnotes.R
 
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val tv = findViewById<TextView>(R.id.tv)
         tv.text = model.content
         tv.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, DragViewActivity::class.java)
             startActivity(intent)
         }
 

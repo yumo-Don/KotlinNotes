@@ -1,4 +1,4 @@
-package com.lollipop.jetpack.room
+package com.lollipop.jetpack.room.daoEntity
 
 /**
  * @Author: lollipop
@@ -8,4 +8,6 @@ package com.lollipop.jetpack.room
 data class Address(
     val city: String,
     val street: String,
-)
+) {
+    constructor() : this("", "")
+}

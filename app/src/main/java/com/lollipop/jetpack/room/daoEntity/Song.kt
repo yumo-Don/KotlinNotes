@@ -1,4 +1,4 @@
-package com.lollipop.jetpack.room
+package com.lollipop.jetpack.room.daoEntity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -11,6 +11,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class Song(
     @PrimaryKey val songId: String,
-    var songSheet: MutableList<String>,
+    var songSheetIds: MutableList<String>,
     var songName: String
 )
