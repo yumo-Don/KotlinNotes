@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.lollipop.dragview.DragViewActivity"></activity>
+        <activity android:name="com.lollipop.activity.CoroutineActivity" />
+        <activity android:name="com.lollipop.dragview.DragViewActivity" />
         <activity android:name="com.lollipop.jetpack.room.RoomActivity" />
         <activity android:name="com.lollipop.activity.SecondActivity" />
         <activity android:name="com.lollipop.activity.MainActivity">

@@ -30,52 +30,11 @@ class DragViewActivity : AppCompatActivity() {
     }
 
     private fun addChildView() {
-        for (i in 0..10) {
-            binding.dragGroup.addView(ItemDragView(this).apply { setTag(i.toString()) })
-        }
-
-        "".let { true }
-
-        "".apply {  }
-    }
-
-    fun test(){
-        TextView(this).apply {
-            textSize = 14f
-        }
-
-        try {
-            TextView(this).also {
-                try {
-                    it.textSize = 14f
-                } catch (e: Exception) {
-                }
-            }
-        } catch (e: Exception) {
-        }
-
-        var string:String? = null
-
-        string?.let {
-             it.length
-             it.substring(0)
-        }
-
-        with(string){
-            this?.length
-            this?.get(0)
-        }
-
-        if (string!=null){
-            string.length
-        }
-
-        kotlin.run { this }
-
-        run {
-
+        for (i in 0..20) {
+            binding.dragGroup.addView(ItemDragView(this).apply {
+//                setTag(i.toString())
+            })
         }
     }
-
 }
 

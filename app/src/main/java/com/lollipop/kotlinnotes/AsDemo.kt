@@ -24,6 +24,7 @@ class AsDemo {
         }
     }
 
+
     /**
      * 通过as关键字，修改导入的函数的名字，当我们在同一个文件内，使用不同包下的不同类或者类的方法时，会十分优雅
      * eg: 我们先使用了com.lollipop.kotlinnotes.Person的枚举类，
@@ -39,5 +40,10 @@ class AsDemo {
 
         //方式二
         People("lollipop")
+    }
+
+    var  a: ((Int) -> Unit)? = null
+    fun test(){
+        a?.let { it(1) }
     }
 }

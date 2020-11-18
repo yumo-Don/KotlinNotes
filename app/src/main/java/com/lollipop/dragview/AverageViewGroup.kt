@@ -3,8 +3,11 @@ package com.lollipop.dragview
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
+import android.util.DisplayMetrics
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.customview.widget.ViewDragHelper
 import com.lollipop.kotlinnotes.R
 import java.util.*
 
@@ -17,10 +20,11 @@ class AverageViewGroup @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
 
-
+    private val viewDragHelper: ViewDragHelper =
+        ViewDragHelper.create(this, LollipopDragHelperCallback())
 
     //屏幕宽度
-    private val screenWidthPx = 0
+    private var screenWidthPx = 0
 
     //子view水平间距
     private var horizontalSpace = 0
@@ -51,6 +55,8 @@ class AverageViewGroup @JvmOverloads constructor(
             )
             array.recycle()
         }
+        val metrics: DisplayMetrics = context.resources.displayMetrics
+        screenWidthPx = metrics.widthPixels
     }
 
     override fun generateLayoutParams(p: LayoutParams?): LayoutParams? {
@@ -71,13 +77,10 @@ class AverageViewGroup @JvmOverloads constructor(
         val sizeHeight = MeasureSpec.getSize(heightMeasureSpec)
         val modeWidth = MeasureSpec.getMode(widthMeasureSpec)
         val modeHeight = MeasureSpec.getMode(heightMeasureSpec)
-        val marginLayoutParams = layoutParams as MarginLayoutParams
-       val marginLeft = marginLayoutParams.leftMargin
-        val marginRight = marginLayoutParams.rightMargin
         val paddingRight = paddingRight
         val paddingLeft = paddingLeft
         val measureWidthSize: Int =
-            (screenWidthPx - marginLeft - marginRight - paddingLeft - paddingRight - (numColumns - 1) * horizontalSpace) / numColumns
+            (sizeWidth - paddingLeft - paddingRight - (numColumns - 1) * horizontalSpace) / numColumns
         var width = 0
         var height = 0
         var lineWidth = 0
@@ -88,9 +91,9 @@ class AverageViewGroup @JvmOverloads constructor(
             if (child.visibility == GONE) {
                 continue
             }
-//            val childWidthMeasureSpec =
-//                MeasureSpec.makeMeasureSpec(measureWidthSize, MeasureSpec.EXACTLY)
-            child.measure(widthMeasureSpec, heightMeasureSpec)
+            val childWidthMeasureSpec =
+                MeasureSpec.makeMeasureSpec(measureWidthSize, MeasureSpec.EXACTLY)
+            child.measure(childWidthMeasureSpec, heightMeasureSpec)
             val lp = child.layoutParams as MarginLayoutParams
             val childWidth = child.measuredWidth + lp.leftMargin + lp.rightMargin
             val childHeight = child.measuredHeight + lp.topMargin + lp.bottomMargin
@@ -175,8 +178,17 @@ class AverageViewGroup @JvmOverloads constructor(
             top += lineHeight
         }
     }
+    override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
+        return viewDragHelper.shouldInterceptTouchEvent(ev)
+    }
 
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        viewDragHelper.processTouchEvent(event)
+        return true
+    }
+
+    override fun computeScroll() {
+        if (viewDragHelper.continueSettling(true))
+            invalidate()
     }
 }

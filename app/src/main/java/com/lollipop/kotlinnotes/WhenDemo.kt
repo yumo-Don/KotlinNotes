@@ -1,5 +1,6 @@
 package com.lollipop.kotlinnotes
 
+import android.util.Log
 import kotlin.math.abs
 
 /**
@@ -15,16 +16,29 @@ class WhenDemo {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            log(Person.Dad)
-            log(Person.Mom)
+//            log(Person.Dad)
+//            log(Person.Mom)
+//
+//            logFamily(setOf(Person.Dad, Person.Mom))
+//            logFamily(setOf(Person.Dad, Person.Child))
+//
+//            logContainWho(setOf(Person.Dad, Person.Mom))
 
-            logFamily(setOf(Person.Dad, Person.Mom))
-            logFamily(setOf(Person.Dad, Person.Child))
+            val map = object :HashMap<String,String>(){
+                init {
+                    "1" to "2"
+                }
+            }
 
-            logContainWho(setOf(Person.Dad, Person.Mom))
+            val z = HashMap<String,String>(2)
+
+
+            val  a = Array(2){}
+            println("${map["1"]}")
         }
 
         private fun log(person: Person) {
+            person.age = 1
             when (person) {
                 Person.Dad -> {
                     println(" this is Dad \"${person.personName}\"")
@@ -37,6 +51,7 @@ class WhenDemo {
                 }
             }
         }
+
 
         private fun logFamily(family: Set<Person>) {
             when (family) {
@@ -73,7 +88,6 @@ class WhenDemo {
             num < 0 -> abs(num)
 
             num < 10 -> num + 2
-
             else -> {
                 print("当前值大于10，需返回")
                 num * 2
@@ -83,7 +97,7 @@ class WhenDemo {
     }
 }
 
-enum class Person(val personName: String, val age: Int) {
+enum class Person(val personName: String, var age: Int) {
 
     Dad("lollipop", 27),
     Mom("dream", 26),

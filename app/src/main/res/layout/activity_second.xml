@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.lollipop.activity.SecondActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="aasaasas"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

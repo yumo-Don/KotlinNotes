@@ -4,29 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="com.lollipop.activity.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/layout_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/tv_jump"
+        style="@style/wwDT15"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorAccent"
-        android:padding="40dp">
+        android:text="JUMP"
+        android:padding="@dimen/x50"/>
 
+    <TextView
+        android:id="@+id/tv_1"
+        style="@style/wwSG15"
+        app:layout_constraintTop_toBottomOf="@id/tv_jump"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_2"
+        android:text="zzzzzzz"
+        android:background="@color/design_default_color_error"/>
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="50dp"
-            android:text="点击"
-            android:background="@android:color/holo_blue_bright"/>
-
-    </LinearLayout>
-
-
+    <TextView
+        android:id="@+id/tv_2"
+        style="@style/wwSG15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="wwwwwww"
+        android:layout_height="@dimen/x200"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

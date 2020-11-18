@@ -2,6 +2,7 @@ package com.lollipop.dragview
 
 import android.content.ClipData
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.DragEvent
@@ -11,49 +12,22 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.lollipop.kotlinnotes.LOG_TAG
 import com.lollipop.kotlinnotes.databinding.ItemDragViewBinding
+import java.util.*
 
 /**
  * @Author: lollipop
  * @Time:2020/9/29
  * @Document:
  */
-class ItemDragView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr) {
+class ItemDragView(context: Context?) : LinearLayout(context) {
 
-    private var dragListener: OnDragListener
-    private var layout: ItemDragViewBinding
+    private var layout: ItemDragViewBinding =
+        ItemDragViewBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
-        dragListener = OnDragListener { view, event ->
-            run {
-                when (event.action) {
-                    DragEvent.ACTION_DRAG_STARTED -> {
-                        Log.d(LOG_TAG, "${view.id} start")
-                    }
-                    DragEvent.ACTION_DRAG_LOCATION -> {
-                        Log.d(LOG_TAG, "${view.id} location")
 
-                    }
-                    DragEvent.ACTION_DRAG_ENTERED -> {
-                        Log.d(LOG_TAG, "${view.id} entered")
-
-                    }
-                    DragEvent.ACTION_DRAG_EXITED -> {
-                        Log.d(LOG_TAG, "${view.id} exited")
-
-                    }
-                    DragEvent.ACTION_DRAG_ENDED -> {
-                        Log.d(LOG_TAG, "${view.id} end")
-                    }
-                    DragEvent.ACTION_DROP -> {
-                        Log.d(LOG_TAG, "${view.id} drop")
-                    }
-                }
-                true
-            }
-        }
-        layout =  ItemDragViewBinding.inflate(LayoutInflater.from(context), this, true)
+        val random = Random()
+        layout.tv.setBackgroundColor((0xff000000 or random.nextInt(0x00ffffff).toLong()).toInt())
     }
 
     fun setTag(viewTag: String) {
@@ -74,7 +48,35 @@ class ItemDragView @JvmOverloads constructor(
                     startDrag(clipData, dragShadowBuilder, it, 0)
                 }
             }
-            setOnDragListener(dragListener)
+            setOnDragListener { view, event ->
+                run {
+                    when (event.action) {
+                        DragEvent.ACTION_DRAG_STARTED -> {
+//                            Log.d(LOG_TAG, "${view.tag} start")
+                        }
+                        DragEvent.ACTION_DRAG_LOCATION -> {
+//                        Log.d(LOG_TAG, "${view.tag} location")
+
+                        }
+                        DragEvent.ACTION_DRAG_ENTERED -> {
+                            Log.d(LOG_TAG, "${view.tag} entered")
+
+                        }
+                        DragEvent.ACTION_DRAG_EXITED -> {
+                            Log.d(LOG_TAG, "${view.tag} exited")
+
+                        }
+                        DragEvent.ACTION_DRAG_ENDED -> {
+//                            Log.d(LOG_TAG, "${view.tag} end")
+                        }
+                        DragEvent.ACTION_DROP -> {
+                            Log.d(LOG_TAG, "${view.tag} drop")
+                        }
+                    }
+                    true
+                }
+            }
         }
+        layout.tv.text = tag.toString()
     }
 }
